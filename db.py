@@ -57,30 +57,3 @@ def get_secret():
         fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
         with os.fdopen(fd,'w') as f:f.write(secrets.token_urlsafe(48))
     return path.read_text().strip()
-):
-                c.execute('INSERT OR IGNORE INTO users(username,display_name,password_hash,role) VALUES (?,?,?,?)',
-                          (username,display,hashed,role))
-
-def now():
-    return datetime.now(timezone.utc).isoformat(timespec='seconds')
-
-def hash_password(password):
-    salt=os.urandom(16); digest=hashlib.scrypt(password.encode(),salt=salt,n=16384,r=8,p=1,dklen=32)
-    return 'scrypt$'+base64.urlsafe_b64encode(salt).decode()+'$'+base64.urlsafe_b64encode(digest).decode()
-
-def check_password(password, stored):
-    try:
-        alg,salt,digest=stored.split('$')
-        if alg!='scrypt':return False
-        actual=hashlib.scrypt(password.encode(),salt=base64.urlsafe_b64decode(salt),n=16384,r=8,p=1,dklen=32)
-        return secrets.compare_digest(actual,base64.urlsafe_b64decode(digest))
-    except Exception:return False
-
-def get_secret():
-    val=os.getenv('PPGCA_SESSION_SECRET','').strip()
-    if val and len(val)>=32:return val
-    path=DB.parent/'.session_secret'
-    if not path.exists():
-        fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
-        with os.fdopen(fd,'w') as f:f.write(secrets.token_urlsafe(48))
-    return path.read_text().strip()
