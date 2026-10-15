@@ -30,7 +30,11 @@ def init():
             ('maria','Maria Ribeiro','editor','PPGCA_MARIA_PASSWORD_HASH'),
         ):
             hashed=os.getenv(env,'')
-            if hashed.startswith('scrypt
+            if hashed.startswith('scrypt$'):
+                c.execute('INSERT OR IGNORE INTO users(username,display_name,password_hash,role) VALUES (?,?,?,?)',
+                          (username,display,hashed,role))
+
+def now():
     return datetime.now(timezone.utc).isoformat(timespec='seconds')
 
 def hash_password(password):
