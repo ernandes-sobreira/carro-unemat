@@ -83,3 +83,13 @@ O `compose.yaml` publica apenas na máquina local por segurança. Para acesso pe
 Os modelos de `assets/` foram preparados a partir dos arquivos institucionais com nomes, telefones, roteiro e descrição da solicitação real **removidos antes da publicação**. Não coloque solicitações preenchidas, dados de passageiros, SQLite, backups, `.env` ou segredos de sessão no GitHub. O exemplo em "Carregar exemplo" é fictício. Guarde os originais com dados preenchidos em armazenamento interno com acesso controlado.
 
 O GitHub mantém o **código**; ainda é necessário implantar o backend com HTTPS e um volume persistente em servidor para Ernandes e Maria usarem o mesmo endereço.
+
+## Demonstração publicada em 15/10/2026
+
+- URL: https://carro-unemat-ppgca.onrender.com/login
+- Serviço: Render gratuito, Docker e publicação automática pela branch main.
+- **Não utilizar com passageiros e solicitações reais**: a persistência ainda é SQLite em armazenamento efêmero, com risco de perda em reinícios e implantações. Há aviso visível no aplicativo.
+- Contas de teste ernandes e maria; senhas armazenadas como hashes scrypt nas variáveis protegidas da hospedagem, não no GitHub.
+- Alterações de senha realizadas nesta versão podem ser perdidas quando o armazenamento for recriado.
+- O Postgres gratuito carro-unemat-ppgca-db foi provisionado, porém ainda não está conectado à aplicação; expira em 14/11/2026.
+- É necessário migrar o banco para PostgreSQL e configurar a conexão antes de uso oficial.
