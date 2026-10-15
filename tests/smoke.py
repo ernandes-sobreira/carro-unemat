@@ -17,7 +17,7 @@ async def run():
         c.execute('INSERT INTO users(username,display_name,password_hash,role) VALUES(?,?,?,?)',('ernandes','Ernandes Sobreira Oliveira Junior',hash_password('SenhaSeguraDeTeste2026'),'admin'))
         c.execute('INSERT INTO users(username,display_name,password_hash,role) VALUES(?,?,?,?)',('maria','Maria Ribeiro',hash_password('SenhaSeguraDeTeste2027'),'editor'))
     async with AsyncClient(transport=ASGITransport(app=app),base_url='http://testserver',follow_redirects=False) as c:
-        assert (await c.get('/')).status_code==401
+        assert (await c.get('/')).status_code==303
         login=await c.get('/login');assert login.status_code==200
         from re import search
         token=search(r'name="token" value="([^"]+)"',login.text).group(1)
