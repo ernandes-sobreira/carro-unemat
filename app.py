@@ -83,8 +83,16 @@ def logout(req:Request,token:str=Form(...),u=Depends(user)):
     if not secrets.compare_digest(token,req.session.get('csrf','')):raise HTTPException(403)
     req.session.clear();return RedirectResponse('/login',303)
 
+@app.head('/')
+def head_root():
+    return Response(status_code=200)
+
 @app.get('/',response_class=HTMLResponse)
-def index(req:Request,u=Depends(user)):
+def index(req:Request):
+    try:
+        u=user(req)
+    except HTTPException:
+        return RedirectResponse('/login',status_code=303)
     return templates.TemplateResponse(req,'index.html',{'csrf':csrf(req),'user':u})
 
 def get_request(rid:int):
