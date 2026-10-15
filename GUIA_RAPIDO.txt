@@ -1,0 +1,28 @@
+PPGCA | SOLICITAÇÃO DE VEÍCULOS
+
+INICIAR NO WINDOWS
+1. Extraia o ZIP inteiro em uma pasta.
+2. Instale Python 3.10 ou superior, caso não tenha.
+3. Clique duas vezes em iniciar_windows.bat.
+4. Na primeira execução, escolha uma senha para Ernandes e outra para Maria.
+5. Use o navegador que se abrirá automaticamente.
+
+ENTRAR
+- Usuário Ernandes: ernandes
+- Usuário Maria: maria
+- As senhas são escolhidas na primeira inicialização; não vêm no pacote.
+
+DOCUMENTOS
+- Preencha os 5 blocos do formulário.
+- Salve a solicitação para gerar a prévia.
+- Baixe Word ou PDF. O modelo oficial enviado foi preservado.
+- Selecione um passageiro cadastrado para preencher seus dados rapidamente.
+
+IMPORTANTE
+- Rodar no seu PC não compartilha automaticamente o sistema com Maria.
+- Para uso simultâneo em locais distintos, publicar em servidor com HTTPS
+  e armazenamento persistente. Consulte README.md para instruções.
+- Para emissão do PDF em situações longas/excepcionais, instale LibreOffice.
+- A ferramenta organiza solicitações; não substitui aprovação oficial.
+
+Repositório público: os modelos de Word/PDF não possuem passageiros reais nem itinerário real.
